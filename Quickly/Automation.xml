@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Automation>
+  <Name>ApplyLeave</Name>
+  <Description>Provide us any type of automation and give us in following format and that can be used just throught a command to cortana</Description>
+  <BusinessArea>AD</BusinessArea>
+  <FunctionalArea>ELD</FunctionalArea>
+  <Path></Path>
+  <Target>myAutomation.exe</Target>
+  <Arguments>
+    <Argument>
+      <Value></Value>
+      <IsOptional>false</IsOptional>
+      <AskUser>true</AskUser>
+      <AskPhrase>Start Date</AskPhrase>
+    </Argument>
+	<Argument>
+      <Value></Value>
+      <IsOptional>false</IsOptional>
+      <AskUser>true</AskUser>
+      <AskPhrase>End Date</AskPhrase>
+    </Argument>
+    <Argument>
+      <Value></Value>
+      <IsOptional>true</IsOptional>
+      <AskUser>true</AskUser>
+      <AskPhrase>Provide comments(optional)</AskPhrase>
+    </Argument>
+    <Argument>
+	  <value></value>
+      <IsOptional>false</IsOptional>
+      <AskUser>true</AskUser>
+      <AskPhrase>Leave Type</AskPhrase>
+      <Options>
+        <Option>
+          <Value>Sick Leave</Value>
+          <ArgString>sick</ArgString>
+        </Option>
+        <Option>
+          <Value>Vacation Leave</Value>
+          <ArgString>vacation</ArgString>
+        </Option>
+      </Options>
+    </Argument>
+	<Argument>
+	  <value></value>
+      <IsOptional>true</IsOptional>
+      <AskUser>true</AskUser>
+      <AskPhrase>Planned leave</AskPhrase>
+      <Options>
+        <Option>
+          <Value>yes</Value>
+          <ArgString>planned</ArgString>
+        </Option>
+        <Option>
+          <Value>no</Value>
+          <ArgString></ArgString>
+        </Option>
+      </Options>
+    </Argument>
+  </Arguments>
+</Automation>

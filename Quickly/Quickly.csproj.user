@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Source>D:\Harsh\Cortana\Quickly\Quickly\Assets\Q4%281%29.png</Source>
+    <SmallTileSource>D:\Harsh\Cortana\Quickly\Quickly\Assets\Q4%281%29.png</SmallTileSource>
+    <MediumTileSource>D:\Harsh\Cortana\Quickly\Quickly\Assets\Q4%281%29.png</MediumTileSource>
+    <WideTileSource>D:\Harsh\Cortana\Quickly\Quickly\Assets\Q4%281%29.png</WideTileSource>
+    <LargeTileSource>D:\Harsh\Cortana\Quickly\Quickly\Assets\Q4%281%29.png</LargeTileSource>
+    <AppIconSource>D:\Harsh\Cortana\Quickly\Quickly\Assets\Q4%281%29.png</AppIconSource>
+    <SplashScreenSource>D:\Harsh\Cortana\Quickly\Quickly\Assets\Q4%281%29.png</SplashScreenSource>
+    <BadgeLogoSource>D:\Harsh\Cortana\Quickly\Quickly\Assets\Q4%281%29.png</BadgeLogoSource>
+    <PackageLogoSource>D:\Harsh\Cortana\Quickly\Quickly\Assets\Q4%281%29.png</PackageLogoSource>
+  </PropertyGroup>
+</Project>

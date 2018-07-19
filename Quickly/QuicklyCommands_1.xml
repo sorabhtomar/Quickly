@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  <CommandSet xml:lang="en-us" Name="HackChat_en-us">
+    <AppName> Quickly </AppName>
+    <Example> Submit Timesheet </Example>
+    <Command Name="Automation">
+      <Example> running now </Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> wake up [and] {command} </ListenFor>
+      <Feedback> Please provide required details </Feedback>
+      <Navigate />
+    </Command>
+    <Command Name="URLaunch">
+      <Example> running now </Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> open {url} </ListenFor>
+      <Feedback> Opening your site </Feedback>
+      <Navigate />
+    </Command>
+    <PhraseList Label="command">
+      <Item> create test run </Item>
+      <Item> compile TIA project </Item>
+      <Item> export test run </Item>
+      <Item> import test results </Item>
+    </PhraseList>
+    <PhraseList Label="url">
+      <Item> time card </Item>
+      <Item> help desk </Item>
+    </PhraseList>
+    <!--<Command Name="Polarion">
+      <Example> running now </Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Process Background </ListenFor>
+      <Feedback> Connecting Polarion in background </Feedback>
+      <VoiceCommandService Target="AutomationServiceVoiceCommand" />
+    </Command>-->
+  </CommandSet>
+</VoiceCommands>

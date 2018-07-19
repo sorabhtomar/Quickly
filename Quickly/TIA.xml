@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Automation>
+  <Name>TIA</Name>
+  <Description>This automation will compile a TIA project</Description>
+  <BusinessArea>AD</BusinessArea>
+  <FunctionalArea>ELD</FunctionalArea>
+  <Path />
+  <Target>TIA_IO.exe</Target>
+  <Arguments>
+    <Argument>
+      <Value></Value>
+      <IsOptional>false</IsOptional>
+      <AskUser>true</AskUser>
+      <AskPhrase>What is the Project path?</AskPhrase>
+    </Argument>
+  </Arguments>
+</Automation>
