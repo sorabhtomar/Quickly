@@ -11,4 +11,8 @@
     <BadgeLogoSource>D:\Harsh\Cortana\Quickly\Quickly\Assets\Q4%281%29.png</BadgeLogoSource>
     <PackageLogoSource>D:\Harsh\Cortana\Quickly\Quickly\Assets\Q4%281%29.png</PackageLogoSource>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
+    <UseEmulator>true</UseEmulator>
+  </PropertyGroup>
 </Project>

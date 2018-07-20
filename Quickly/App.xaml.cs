@@ -49,7 +49,7 @@ namespace Quickly
             rootFrame = new Frame();
             rootFrame.NavigationFailed += OnNavigationFailed;
 
-            rootFrame.Navigate(typeof(HelpPage1));
+            rootFrame.Navigate(typeof(MainPage));
             Window.Current.Content = rootFrame;
             Window.Current.Activate();
 

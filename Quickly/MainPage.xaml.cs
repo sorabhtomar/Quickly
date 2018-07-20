@@ -35,209 +35,206 @@ namespace Quickly
         public MainPage()
         {
             this.InitializeComponent();
-            this.MyLayout();
+            PageFrame.Navigate(typeof(HomePage));
         }
 
-        private void MyLayout()
-        {
-            if (App.automationInfo == null)
-            {
-                showhelp();
-                return;
-            }
-            automation = App.automationInfo;
-            pageTitle.Text = (automation.Name + " Quickly"); //Update Title in the first Row.
-            labels = new List<TextBlock>();
-            boxes = new List<TextBox>();
-            buttons = new List<RadioButton>();
+        //private void MyLayout()
+        //{
+        //    if (App.automationInfo == null)
+        //    {
+        //        showhelp();
+        //        return;
+        //    }
+        //    automation = App.automationInfo;
+        //    pageTitle.Text = (automation.Name + " Quickly"); //Update Title in the first Row.
+        //    labels = new List<TextBlock>();
+        //    boxes = new List<TextBox>();
+        //    buttons = new List<RadioButton>();
 
 
-            int i = 0;
-            foreach (Argument arg in automation.Arguments)
-            {
-                if (arg.AskUser == true)
-                {
+        //    int i = 0;
+        //    foreach (Argument arg in automation.Arguments)
+        //    {
+        //        if (arg.AskUser == true)
+        //        {
 
-                    RowDefinition row = new RowDefinition()
-                    {
-                        Height = GridLength.Auto
-                    };
+        //            RowDefinition row = new RowDefinition()
+        //            {
+        //                Height = GridLength.Auto
+        //            };
 
-                    TextBlock label = new TextBlock()
-                    {
-                        Text = arg.AskPhrase,
-                        HorizontalAlignment = HorizontalAlignment.Left,
-                        VerticalAlignment = VerticalAlignment.Center,
-                        Margin = new Thickness(10, 0, 0, 0)
-                    };
-                    Grid.SetRow(label, i);
-                    Grid.SetColumn(label, 0);
-                    labels.Add(label);
-                    contentGrid.Children.Add(label);
+        //            TextBlock label = new TextBlock()
+        //            {
+        //                Text = arg.AskPhrase,
+        //                HorizontalAlignment = HorizontalAlignment.Left,
+        //                VerticalAlignment = VerticalAlignment.Center,
+        //                Margin = new Thickness(10, 0, 0, 0)
+        //            };
+        //            Grid.SetRow(label, i);
+        //            Grid.SetColumn(label, 0);
+        //            labels.Add(label);
+        //            contentGrid.Children.Add(label);
 
-                    if (arg.Options.Count == 0)
-                    {
-                        TextBox box = new TextBox()
-                        {
-                            HorizontalAlignment = HorizontalAlignment.Left,
-                            VerticalAlignment = VerticalAlignment.Center,
-                            Margin = new Thickness(10, 0, 0, 0)
-                        };
-                        boxes.Add(box);
-                        Grid.SetRow(box, i);
-                        Grid.SetColumn(box, 1);
-                        contentGrid.Children.Add(box);
-                    }
-                    else
-                    {
-                        int j = 0;
-                        foreach (Option o in arg.Options)
-                        //for(int k=0;k<10;k++)
-                        {
+        //            if (arg.Options.Count == 0)
+        //            {
+        //                TextBox box = new TextBox()
+        //                {
+        //                    HorizontalAlignment = HorizontalAlignment.Left,
+        //                    VerticalAlignment = VerticalAlignment.Center,
+        //                    Margin = new Thickness(10, 0, 0, 0)
+        //                };
+        //                boxes.Add(box);
+        //                Grid.SetRow(box, i);
+        //                Grid.SetColumn(box, 1);
+        //                contentGrid.Children.Add(box);
+        //            }
+        //            else
+        //            {
+        //                int j = 0;
+        //                foreach (Option o in arg.Options)
+        //                //for(int k=0;k<10;k++)
+        //                {
 
-                            RadioButton rb = new RadioButton()
-                            {
-                                Content = o.Value,
-                                GroupName = ("Radio" + i.ToString()),
-                                HorizontalAlignment = HorizontalAlignment.Left,
-                                VerticalAlignment = VerticalAlignment.Center,
-                                Margin = new Thickness((j * 100) + 10, 0, 0, 0)
-                            };
-                            buttons.Add(rb);
-                            Grid.SetRow(rb, i);
-                            Grid.SetColumn(rb, 1);
-                            contentGrid.Children.Add(rb);
-                            j++;
-                        }
+        //                    RadioButton rb = new RadioButton()
+        //                    {
+        //                        Content = o.Value,
+        //                        GroupName = ("Radio" + i.ToString()),
+        //                        HorizontalAlignment = HorizontalAlignment.Left,
+        //                        VerticalAlignment = VerticalAlignment.Center,
+        //                        Margin = new Thickness((j * 100) + 10, 0, 0, 0)
+        //                    };
+        //                    buttons.Add(rb);
+        //                    Grid.SetRow(rb, i);
+        //                    Grid.SetColumn(rb, 1);
+        //                    contentGrid.Children.Add(rb);
+        //                    j++;
+        //                }
 
-                    }
+        //            }
 
-                    contentGrid.RowDefinitions.Add(row);
+        //            contentGrid.RowDefinitions.Add(row);
 
-                    i++;
-                }
-            }
-
-
-
-
-            //mainGrid.HorizontalAlignment = HorizontalAlignment.Left;
-            //mainGrid.VerticalAlignment = VerticalAlignment.Top;
-
-            //RowDefinition row1 = new RowDefinition();
-            //row1.Height = new GridLength(60, GridUnitType.Pixel);
-            //RowDefinition row2 = new RowDefinition();
-            //row2.Height = GridLength.Auto;
-            //RowDefinition row3 = new RowDefinition();
-            //row3.Height = GridLength.Auto;
-
-            //RowDefinition row4 = new RowDefinition();
-            //row4.Height = new GridLength(1, GridUnitType.Star);
-            //RowDefinition row5 = new RowDefinition();
-            //row5.Height = GridLength.Auto;
-
-            //mainGrid.RowDefinitions.Add(row1);
-            //mainGrid.RowDefinitions.Add(row2);
-            //mainGrid.RowDefinitions.Add(row3);
-            //mainGrid.RowDefinitions.Add(row4);
-            //mainGrid.RowDefinitions.Add(row5);
-
-            //this.Content = mainGrid;
+        //            i++;
+        //        }
+        //    }
 
 
 
 
-        }
+        //    //mainGrid.HorizontalAlignment = HorizontalAlignment.Left;
+        //    //mainGrid.VerticalAlignment = VerticalAlignment.Top;
+
+        //    //RowDefinition row1 = new RowDefinition();
+        //    //row1.Height = new GridLength(60, GridUnitType.Pixel);
+        //    //RowDefinition row2 = new RowDefinition();
+        //    //row2.Height = GridLength.Auto;
+        //    //RowDefinition row3 = new RowDefinition();
+        //    //row3.Height = GridLength.Auto;
+
+        //    //RowDefinition row4 = new RowDefinition();
+        //    //row4.Height = new GridLength(1, GridUnitType.Star);
+        //    //RowDefinition row5 = new RowDefinition();
+        //    //row5.Height = GridLength.Auto;
+
+        //    //mainGrid.RowDefinitions.Add(row1);
+        //    //mainGrid.RowDefinitions.Add(row2);
+        //    //mainGrid.RowDefinitions.Add(row3);
+        //    //mainGrid.RowDefinitions.Add(row4);
+        //    //mainGrid.RowDefinitions.Add(row5);
+
+        //    //this.Content = mainGrid;
+
+
+
+
+        //}
 
         private void showhelp()
         {
             
         }
 
-        private void pageTitle_SelectionChanged(object sender, RoutedEventArgs e)
-        {
 
-        }
+        //private void RunButton_Click(object sender, RoutedEventArgs e)
+        //{ 
+        //    if (App.automationInfo == null)
+        //        return;
+        //    int missFlag = 0;
+        //    userValues = new Queue<string>();
+        //    command = new List<string>();
+        //    foreach (UIElement v in contentGrid.Children.Where(v => v.GetType().ToString() != "Windows.UI.Xaml.Controls.TextBlock"))
+        //    {
+        //        if (missFlag > 0)
+        //        {
+        //            missFlag--;
+        //            continue;
+        //        }
+        //        string group = null;
+        //        if (v.GetType().ToString() == "Windows.UI.Xaml.Controls.TextBox")
+        //        {
+        //            userValues.Enqueue(((TextBox)v).Text.ToString());
+        //        }
+        //        else if (v.GetType().ToString() == "Windows.UI.Xaml.Controls.RadioButton")
+        //        {
+        //            RadioButton rb = (RadioButton)v;
+        //            group = rb.GroupName;
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (App.automationInfo == null)
-                return;
-            int missFlag = 0;
-            userValues = new Queue<string>();
-            command = new List<string>();
-            foreach (UIElement v in contentGrid.Children.Where(v => v.GetType().ToString() != "Windows.UI.Xaml.Controls.TextBlock"))
-            {
-                if (missFlag > 0)
-                {
-                    missFlag--;
-                    continue;
-                }
-                string group = null;
-                if (v.GetType().ToString() == "Windows.UI.Xaml.Controls.TextBox")
-                {
-                    userValues.Enqueue(((TextBox)v).Text.ToString());
-                }
-                else if (v.GetType().ToString() == "Windows.UI.Xaml.Controls.RadioButton")
-                {
-                    RadioButton rb = (RadioButton)v;
-                    group = rb.GroupName;
+        //            int buttoncount = 0;
+        //            RadioButton checkedOne = null; // = new RadioButton();
+        //            foreach (UIElement v1 in contentGrid.Children.Where
+        //                (v1 => (v1.GetType().ToString() == "Windows.UI.Xaml.Controls.RadioButton") && (
+        //                (RadioButton)v1).GroupName == group))
+        //            {
+        //                if (((RadioButton)v1).IsChecked == true)
+        //                {
+        //                    checkedOne = new RadioButton();
+        //                    checkedOne = (RadioButton)v1;
+        //                }
+        //                buttoncount++;
+        //            }
+        //            missFlag = buttoncount - 1;
+        //            if (checkedOne == null)  //(Object.ReferenceEquals(checkedOne,null) || object.Equals(null, checkedOne))
+        //            {
+        //                userValues.Enqueue("");
+        //            }
+        //            else
+        //                userValues.Enqueue(checkedOne.Content.ToString());
+        //        }
+        //    }
 
-                    int buttoncount = 0;
-                    RadioButton checkedOne = null; // = new RadioButton();
-                    foreach (UIElement v1 in contentGrid.Children.Where
-                        (v1 => (v1.GetType().ToString() == "Windows.UI.Xaml.Controls.RadioButton") && (
-                        (RadioButton)v1).GroupName == group))
-                    {
-                        if (((RadioButton)v1).IsChecked == true)
-                        {
-                            checkedOne = new RadioButton();
-                            checkedOne = (RadioButton)v1;
-                        }
-                        buttoncount++;
-                    }
-                    missFlag = buttoncount - 1;
-                    if (checkedOne == null)  //(Object.ReferenceEquals(checkedOne,null) || object.Equals(null, checkedOne))
-                    {
-                        userValues.Enqueue("");
-                    }
-                    else
-                        userValues.Enqueue(checkedOne.Content.ToString());
-                }
-            }
-
-            foreach (Argument arg in automation.Arguments)
-            {
-                if (string.IsNullOrWhiteSpace(arg.Value) == false)
-                {
-                    command.Add(arg.Value);
-                }
-                else
-                {
-                    if (arg.Options.Count == 0)//textbox
-                    {
-                        string qval = userValues.Dequeue();
-                        if (string.IsNullOrWhiteSpace(qval) == false)
-                            command.Add(qval);
-                    }
-                    else//radiobutton
-                    {
-                        string qval = userValues.Dequeue();
-                        foreach (Option o in arg.Options)
-                        {
-                            if (qval == o.Value)
-                            {
-                                if (string.IsNullOrWhiteSpace(o.ArgString) == false)
-                                    command.Add(o.ArgString);
-                            }
-                        }
-                    }
-                }
-            }
-            var task = Task.Run(async () => await CreateFileAsync());
-            task.Wait();
-            App.Current.Exit();
-        }
+        //    foreach (Argument arg in automation.Arguments)
+        //    {
+        //        if (string.IsNullOrWhiteSpace(arg.Value) == false)
+        //        {
+        //            command.Add(arg.Value);
+        //        }
+        //        else
+        //        {
+        //            if (arg.Options.Count == 0)//textbox
+        //            {
+        //                string qval = userValues.Dequeue();
+        //                if (string.IsNullOrWhiteSpace(qval) == false)
+        //                    command.Add(qval);
+        //            }
+        //            else//radiobutton
+        //            {
+        //                string qval = userValues.Dequeue();
+        //                foreach (Option o in arg.Options)
+        //                {
+        //                    if (qval == o.Value)
+        //                    {
+        //                        if (string.IsNullOrWhiteSpace(o.ArgString) == false)
+        //                            command.Add(o.ArgString);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    var task = Task.Run(async () => await CreateFileAsync());
+        //    task.Wait();
+        //    App.Current.Exit();
+        //}
+        private void RunButton_Click(object sender, RoutedEventArgs e) { }
 
         private async System.Threading.Tasks.Task CreateFileAsync()
         {
@@ -250,6 +247,31 @@ namespace Quickly
             foreach (string s in command)
             await FileIO.AppendTextAsync(sampleFile,s+" ");
             await sampleFile.RenameAsync("command.bat",NameCollisionOption.ReplaceExisting);
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Navigate to Home Page
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Navigate to Add Automation page
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Navigate to HelpPage
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
