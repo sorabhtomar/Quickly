@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Collection>
+  <commands>
+    <command>
+      <key>create test run</key>
+      <value>Polarion_Create.xml</value>
+    </command>
+    <command>
+      <key>compile TIA project</key>
+      <value>TIA.xml</value>
+    </command>
+    <command>
+      <key>export test run</key>
+      <value>Polarion_Export.xml</value>
+    </command>
+    <command>
+      <key>import test results</key>
+      <value>Polarion_Import.xml</value>
+    </command>
+  </commands>
+  <URLs>
+    <URL>
+    <key>time card</key>
+    <value>https://tiweb.industrysoftware.automation.siemens.com/tc3/tc3_start.cgi</value>
+    </URL>
+    <URL>
+      <key>help desk</key>
+      <value>https://helpdesk.industrysoftware.automation.siemens.com/CAisd/pdmweb.exe</value>
+    </URL>
+    <URL>
+      <key>STT</key>
+      <value>https://tiweb.industrysoftware.automation.siemens.com/stt/stt.cgi</value>
+    </URL>
+  </URLs>
+</Collection>

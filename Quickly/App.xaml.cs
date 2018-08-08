@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.Media.SpeechRecognition;
 using Windows.System;
+using Quickly.Models;
+using Quickly.Views;
 
 namespace Quickly
 {
@@ -44,7 +46,7 @@ namespace Quickly
             ///n1yyas
             ///Code for installing VCD file
             await RegisterVCDAsync();
-            
+
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame = new Frame();
             rootFrame.NavigationFailed += OnNavigationFailed;
@@ -76,8 +78,7 @@ namespace Quickly
         {
             base.OnActivated(args);
 
-            if (args.Kind == ActivationKind.VoiceCommand)
-            {
+            if (args.Kind == ActivationKind.VoiceCommand) {
 
                 var commandArgs = args as VoiceCommandActivatedEventArgs;
                 SpeechRecognitionResult speechRecognitionResult = commandArgs.Result;
@@ -90,48 +91,46 @@ namespace Quickly
                 string xmlfilename = null;
                 //automationInfo = await ParseAutomationFileAsync(@"TIA.xml");
 
-                switch (voiceCommandName)
-                {
-                    case "Automation":
-                        {
+                Collection collection = await Collection.GetCollectionAsync();
+
+                switch (voiceCommandName) {
+                    case "Automation": {
                             label = this.SemanticInterpretation("command", speechRecognitionResult);
-                            if (label == "compile TIA project")
-                                xmlfilename = "TIA.xml";
-                            else if (label == "create test run")
-                                xmlfilename = "Polarion.xml";
+                            foreach (command c in collection.commands) {
+                                if (label == c.key) {
+                                    xmlfilename = c.value;
+                                    break;
+                                }
+                            }
+
                             automationInfo = await ParseAutomationFileAsync(xmlfilename);
+
                             Frame rootFrame = Window.Current.Content as Frame;
                             rootFrame = new Frame();
                             rootFrame.NavigationFailed += OnNavigationFailed;
 
-                            rootFrame.Navigate(typeof(MainPage), textSpoken);
+                            rootFrame.Navigate(typeof(ContentPage), textSpoken);
                             Window.Current.Content = rootFrame;
                             Window.Current.Activate();
                             break;
                         }
-                    case "URLaunch":
-                        {
+                    case "URLaunch": {
                             label = this.SemanticInterpretation("url", speechRecognitionResult);
                             Uri website;
-                            switch (label)
-                            {
-                                case "time card":
-                                    {
+                            switch (label) {
+                                case "time card": {
                                         website = new Uri(@"https://tiweb.industrysoftware.automation.siemens.com/tc3/tc3_start.cgi");
                                         break;
                                     }
-                                case "help desk":
-                                    {
+                                case "help desk": {
                                         website = new Uri(@"https://helpdesk.industrysoftware.automation.siemens.com/CAisd/pdmweb.exe");
                                         break;
                                     }
-                                case "STT":
-                                    {
+                                case "STT": {
                                         website = new Uri(@"https://tiweb.industrysoftware.automation.siemens.com/stt/stt.cgi");
                                         break;
                                     }
-                                default:
-                                    {
+                                default: {
 
                                         website = new Uri(@"http:\\www.google.com");
                                         break;
@@ -145,8 +144,7 @@ namespace Quickly
                 }
 
             }
-            else if (args.Kind == ActivationKind.Protocol)
-            {
+            else if (args.Kind == ActivationKind.Protocol) {
                 var commandArgs = args as ProtocolActivatedEventArgs;
                 Windows.Foundation.WwwFormUrlDecoder decoder = new Windows.Foundation.WwwFormUrlDecoder(commandArgs.Uri.Query);
                 var destination = decoder.GetFirstValueByName("LaunchContext");
@@ -159,10 +157,9 @@ namespace Quickly
             //Window.Current.Content = rootFrame;
         }
 
-        public async Task<Automation> ParseAutomationFileAsync(string filename)
+        public static async Task<Automation> ParseAutomationFileAsync(string filename)
         {
-            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-
+            StorageFolder storageFolder = await ApplicationData.Current.LocalFolder.GetFolderAsync("Automations");
             StorageFile sampleFile = await storageFolder.GetFileAsync(filename);
             string text = await FileIO.ReadTextAsync(sampleFile);
             var serializer = new XmlSerializer(typeof(Automation));

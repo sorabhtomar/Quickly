@@ -5,7 +5,7 @@
     <Example> Submit Timesheet </Example>
     <Command Name="Automation">
       <Example> running now </Example>
-      <ListenFor RequireAppName="BeforeOrAfterPhrase"> wake up [and] {command} </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> run command to {command} </ListenFor>
       <Feedback> Please provide required details </Feedback>
       <Navigate />
     </Command>
@@ -24,6 +24,7 @@
     <PhraseList Label="url">
       <Item> time card </Item>
       <Item> help desk </Item>
+      <Item> polarion </Item>
     </PhraseList>
     <!--<Command Name="Polarion">
       <Example> running now </Example>
