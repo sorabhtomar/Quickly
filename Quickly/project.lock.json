@@ -21962,10 +21962,10 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "D:\\Harsh\\Cortana\\Quickly\\Quickly\\Quickly.csproj",
+      "projectUniqueName": "D:\\Harsh\\GitHub\\Quickly.git\\Quickly\\Quickly.csproj",
       "projectName": "Quickly",
-      "projectPath": "D:\\Harsh\\Cortana\\Quickly\\Quickly\\Quickly.csproj",
-      "projectJsonPath": "D:\\Harsh\\Cortana\\Quickly\\Quickly\\project.json",
+      "projectPath": "D:\\Harsh\\GitHub\\Quickly.git\\Quickly\\Quickly.csproj",
+      "projectJsonPath": "D:\\Harsh\\GitHub\\Quickly.git\\Quickly\\project.json",
       "projectStyle": "ProjectJson"
     },
     "dependencies": {
