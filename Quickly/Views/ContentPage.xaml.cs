@@ -1,4 +1,4 @@
-﻿using Quickly.Domain.SchemaModels;
+﻿using Quickly.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,59 +26,79 @@ namespace Quickly.Views
         public ContentPage()
         {
             this.InitializeComponent();
-            ShowContent();
+            GenerateArgumentForm();
         }
 
-        private void ShowContent()
+        private void GenerateArgumentForm()
         {
             contentGrid.Children.Clear();
+            ///Set header of the form
             DescriptionBlock.Text = App.automationInfo.Description;
+
+            ///Create Lists for labels,boxes,buttons which are going to be generated dynamically
             labels = new List<TextBlock>();
             boxes = new List<TextBox>();
             buttons = new List<RadioButton>();
 
-            int i = 0;
+            ///variable to keep track of row counts and count of Arguments to get from users
+            int i = 0; 
+
+            ///Prepare form
             foreach (Argument arg in App.automationInfo.Arguments) {
+                ///Check if argument value is based on user input
                 if (arg.AskUser == true) {
 
+                    ///Add new row
                     RowDefinition row = new RowDefinition() {
                         Height = GridLength.Auto
                     };
 
+                    ///add new label
                     TextBlock label = new TextBlock() {
                         Text = arg.AskPhrase,
                         HorizontalAlignment = HorizontalAlignment.Left,
                         VerticalAlignment = VerticalAlignment.Center,
-                        Margin = new Thickness(10, 0, 0, 0)
+                        Margin = new Thickness(10, 10, 0, 0)
                     };
-                    Grid.SetRow(label, i);
+
+                    /// set place in the form for the label
+                    Grid.SetRow(label, i); 
                     Grid.SetColumn(label, 0);
                     labels.Add(label);
                     contentGrid.Children.Add(label);
 
+                    ///Check if argument value is to be chosen from limited options
+                    
+                    ///Provide text box if option is not specified
                     if (arg.Options.Count == 0) {
                         TextBox box = new TextBox() {
                             HorizontalAlignment = HorizontalAlignment.Left,
                             VerticalAlignment = VerticalAlignment.Center,
-                            Margin = new Thickness(10, 0, 0, 0)
+                            Margin = new Thickness(10, 10, 0, 0),
+                            MinWidth=100
                         };
                         boxes.Add(box);
                         Grid.SetRow(box, i);
                         Grid.SetColumn(box, 1);
                         contentGrid.Children.Add(box);
                     }
+
+                    ///Provide radio button if option is specified
                     else {
-                        int j = 0;
+                        int j = 0; /// integer used to set off set of radio buttons from each other.
                         foreach (Option o in arg.Options)
                         //for(int k=0;k<10;k++)
                         {
+                            ///Create radio button
                             RadioButton rb = new RadioButton() {
                                 Content = o.Value,
                                 GroupName = ("Radio" + i.ToString()),
                                 HorizontalAlignment = HorizontalAlignment.Left,
                                 VerticalAlignment = VerticalAlignment.Center,
-                                Margin = new Thickness((j * 100) + 10, 0, 0, 0)
+                                Margin = new Thickness((j * 100) + 10, 10, 0, 0)
                             };
+
+                            ///Place radio button in the form
                             buttons.Add(rb);
                             Grid.SetRow(rb, i);
                             Grid.SetColumn(rb, 1);
@@ -86,10 +106,14 @@ namespace Quickly.Views
                             j++;
                         }
                     }
+
+                    ///Add row in the grid
                     contentGrid.RowDefinitions.Add(row);
                     i++;
                 }
             }
+
+            ///Show Run button
             RunButton.Visibility = Visibility.Visible;
         }
 

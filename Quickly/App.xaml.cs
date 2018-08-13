@@ -1,4 +1,4 @@
-﻿using Quickly.Domain.SchemaModels;
+﻿using Quickly.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +13,6 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.Media.SpeechRecognition;
 using Windows.System;
-using Quickly.Models;
 using Quickly.Views;
 
 namespace Quickly
@@ -116,27 +115,13 @@ namespace Quickly
                         }
                     case "URLaunch": {
                             label = this.SemanticInterpretation("url", speechRecognitionResult);
-                            Uri website;
-                            switch (label) {
-                                case "time card": {
-                                        website = new Uri(@"https://tiweb.industrysoftware.automation.siemens.com/tc3/tc3_start.cgi");
-                                        break;
-                                    }
-                                case "help desk": {
-                                        website = new Uri(@"https://helpdesk.industrysoftware.automation.siemens.com/CAisd/pdmweb.exe");
-                                        break;
-                                    }
-                                case "STT": {
-                                        website = new Uri(@"https://tiweb.industrysoftware.automation.siemens.com/stt/stt.cgi");
-                                        break;
-                                    }
-                                default: {
-
-                                        website = new Uri(@"http:\\www.google.com");
-                                        break;
-                                    }
+                            Uri website = null;
+                            foreach (URL c in collection.URLs) {
+                                if (label == c.key) {
+                                    website = new Uri(c.value);
+                                    break;
+                                }
                             }
-
                             var success = await Launcher.LaunchUriAsync(website);
                             break;
                         }

@@ -1,4 +1,4 @@
-﻿using Quickly.Domain.SchemaModels;
+﻿using Quickly.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,23 +28,24 @@ namespace Quickly
         public MainPage()
         {
             this.InitializeComponent();
-            PageFrame.Navigate(typeof(HomePage));
+            PageFrame.Navigate(typeof(Views.HomePage));
         }
         
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            PageFrame.Navigate(typeof(HomePage));
+            PageFrame.Navigate(typeof(Views.HomePage));
             //Navigate to Home Page
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            PageFrame.Navigate(typeof(Views.AddAutomationPage));
             //Navigate to Add Automation page
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            PageFrame.Navigate(typeof(HelpPage));
+            PageFrame.Navigate(typeof(Views.HelpPage));
             //Navigate to HelpPage
         }
 

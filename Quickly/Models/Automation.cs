@@ -7,7 +7,7 @@ using Windows.Storage;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace Quickly.Domain.SchemaModels
+namespace Quickly.Models
 { 
     //[DataContract]
     public class Argument
